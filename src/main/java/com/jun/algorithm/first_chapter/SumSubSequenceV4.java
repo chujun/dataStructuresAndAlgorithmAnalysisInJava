@@ -1,5 +1,6 @@
 package com.jun.algorithm.first_chapter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class SumSubSequenceV4 {
         System.out.println(sumSubSequence(list));
 
         System.out.println(sumSubSequence(Arrays.asList(-1)));
+
+        System.out.println(sumSubSequence(Arrays.asList(2,-3,4,3,-5)));
     }
 
     /**
@@ -26,18 +29,28 @@ public class SumSubSequenceV4 {
         }
         int maxSum=list.get(0),thisSum=0;
 
+        //用于存储最大子序列值
+        List<Integer> subSequence=new ArrayList<Integer>();
         for (Integer value : list) {
             thisSum += value;
+            subSequence.add(value);
             if (thisSum > maxSum) {
                 maxSum = thisSum;
             }
             if (thisSum < 0) {
                 thisSum = 0;
+                subSequence=new ArrayList<Integer>();
             }
         }
+
+        System.out.println(subSequence);
         return maxSum;
     }
-
-
-
 }
+
+//[1, 2, 3, -5, 6, 7, 8, -3, 4, 3, 5]
+//            31
+//            []
+//            -1
+//            [4, 3, -5]
+//            7
