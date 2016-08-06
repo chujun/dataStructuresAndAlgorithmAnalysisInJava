@@ -35,9 +35,11 @@ public class SumSubSequenceV4 {
             thisSum += value;
             subSequence.add(value);
             if (thisSum > maxSum) {
+                //存储当前和最大的子序列和值
                 maxSum = thisSum;
             }
             if (thisSum < 0) {
+                //重新开始计算可能的最大子序列
                 thisSum = 0;
                 subSequence=new ArrayList<Integer>();
             }
